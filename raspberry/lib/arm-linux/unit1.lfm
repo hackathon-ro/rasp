@@ -33,11 +33,35 @@ object Form1: TForm1
     Width = 302
     TabOrder = 2
   end
+  object Button2: TButton
+    Left = 8
+    Height = 25
+    Top = 48
+    Width = 75
+    Caption = 'Init Wind'
+    OnClick = Button2Click
+    TabOrder = 3
+  end
+  object edtWind: TEdit
+    Left = 96
+    Height = 17
+    Top = 56
+    Width = 80
+    TabOrder = 4
+    Text = '/dev/ttyAMA0'
+  end
   object tmrPC: TTimer
     Enabled = False
     Interval = 400
     OnTimer = tmrPCTimer
     left = 240
     top = 8
+  end
+  object tmrWind: TTimer
+    Enabled = False
+    Interval = 400
+    OnTimer = tmrWindTimer
+    left = 240
+    top = 56
   end
 end
