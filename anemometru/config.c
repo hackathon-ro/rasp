@@ -1,0 +1,3 @@
+#include <pic.h>
+
+__CONFIG(WDTDIS & PWRTEN & MCLRDIS & BOREN & LVPDIS & HS & PROTECT);
