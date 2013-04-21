@@ -11,7 +11,7 @@ $db = mysql_connect($adresa_db, $utilizator_db, $parola_db) or die("Database una
 mysql_select_db("hackathon", $db);
 
 $temp="INSERT anemometru
-			SET speed=\"$_GET[spd]\";";
+			SET speed=\"$_GET[spd]\", location_id=(SELECT id FROM location ORDER BY id DESC LIMIT 1);";
 		
 		$query = mysql_query($temp);
 		if (!$query) {

@@ -15,9 +15,11 @@ type
   TForm1 = class(TForm)
     Button1: TButton;
     Button2: TButton;
-    edtWind: TEdit;
     edtGamma: TEdit;
+    edtWind: TEdit;
     Memo1: TMemo;
+    Panel1: TPanel;
+    Panel2: TPanel;
     tmrWind: TTimer;
     tmrPC: TTimer;
     procedure Button1Click(Sender: TObject);
@@ -109,10 +111,17 @@ begin
               res:=copy(s,1,pos('s',s)-1);
               s:='http://hackathon.capel.ro/submit_dez.php?dez='+dez+'&res='+res;
               //memo1.lines.add(s);
-              HTTPPost(s,'',Data);
+              if HTTPPost(s,'',Data) then begin
+                 Panel2.color:=clLime;
+                 Panel2.Caption:='Data sent';
+              end else begin
+                  panel2.color:=clRed;
+                  panel2.caption:='Can''t send data';
+              end;
        finally
        end;
      end;
+     if memo1.lines.count>10000 then memo1.lines.clear;
      tmrPC.enabled:=true;
 
 end;
@@ -136,7 +145,13 @@ begin
               end;
               s:='http://hackathon.capel.ro/submit_ane.php?spd='+spd;
               //memo1.lines.add(s);
-              HTTPPost(s,'',Data);
+              if HTTPPost(s,'',Data) then begin
+                 Panel2.color:=clLime;
+                 Panel2.Caption:='Data sent';
+              end else begin
+                  panel2.color:=clRed;
+                  panel2.caption:='Can''t send data';
+              end;
        finally
        end;
      end;
